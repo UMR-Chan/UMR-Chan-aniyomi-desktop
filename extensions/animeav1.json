@@ -1,9 +1,9 @@
 {
   "id": "animeav1",
   "name": "AnimeAV1",
-  "version": 1,
+  "version": 2,
   "lang": "es",
-  "description": "Anime sub/latino desde animeav1.com (HTML). Video AV1: usa VLC o el navegador.",
+  "description": "Anime sub/latino desde animeav1.com (HTML). Video AV1 decodificado con FFmpeg en el reproductor de la app.",
   "baseUrl": "https://animeav1.com",
   "codec": "av1",
   "headers": {
@@ -32,10 +32,19 @@
         "name": "MP4Upload",
         "type": "mp4",
         "steps": [
-          { "regex": "server:\"MP4Upload\",url:\"(https://www\\.mp4upload\\.com/embed-[^\"]+)\"" },
-          { "regex": "src:\\s*\"(https?://[^\"]+\\.mp4)\"", "headers": { "Referer": "https://animeav1.com/" } }
+          {
+            "regex": "server:\"MP4Upload\",url:\"(https://www\\.mp4upload\\.com/embed-[^\"]+)\""
+          },
+          {
+            "regex": "src:\\s*\"(https?://[^\"]+\\.mp4)\"",
+            "headers": {
+              "Referer": "https://animeav1.com/"
+            }
+          }
         ],
-        "streamHeaders": { "Referer": "https://www.mp4upload.com/" }
+        "streamHeaders": {
+          "Referer": "https://www.mp4upload.com/"
+        }
       },
       {
         "name": "HLS",

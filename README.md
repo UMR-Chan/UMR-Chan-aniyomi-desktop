@@ -15,7 +15,7 @@ selectores CSS (Jsoup) y expresiones regulares.
 |---|---|
 | `id`, `name`, `version`, `lang`, `description` | Metadatos. Sube `version` para que la app reemplace la copia en caché. |
 | `baseUrl` | Dominio de la fuente. Se usa para saber a qué extensión pertenece una URL. |
-| `codec` | `av1` / `hevc` si el vídeo no lo puede decodificar el reproductor interno (JavaFX). La app usa VLC o el navegador. |
+| `codec` | Informativo (`av1`, `hevc`, `h264`). Los streams web se decodifican con FFmpeg dentro del reproductor de la app. |
 | `headers` | Cabeceras para todas las peticiones (p. ej. `User-Agent`). |
 | `search.url` | Plantilla con `{baseUrl}` y `{query}`. |
 | `search.item` / `title` / `link` / `thumbnail` | Selectores CSS de cada resultado. |
