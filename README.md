@@ -29,4 +29,4 @@ selectores CSS (Jsoup) y expresiones regulares.
 
 1. Crea `extensions/<id>.json`.
 2. Añádela a `index.json`.
-3. Pruébala desde el proyecto: `gradlew checkExtension -Pq="nombre" -Pspec=ruta/al/<id>.json`.
+3. Pruébala desde el proyecto: `gradlew checkExtension -PextQ="nombre" -PextSpec=ruta/al/<id>.json`.
