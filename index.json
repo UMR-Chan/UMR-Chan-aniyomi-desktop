@@ -1,0 +1,13 @@
+{
+  "name": "UMR-Chan Aniyomi Desktop Extensions",
+  "extensions": [
+    {
+      "id": "animeav1",
+      "name": "AnimeAV1",
+      "version": 1,
+      "lang": "es",
+      "description": "Anime sub/latino desde animeav1.com (HTML).",
+      "url": "extensions/animeav1.json"
+    }
+  ]
+}

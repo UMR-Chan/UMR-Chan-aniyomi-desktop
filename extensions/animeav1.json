@@ -1,0 +1,58 @@
+{
+  "id": "animeav1",
+  "name": "AnimeAV1",
+  "version": 1,
+  "lang": "es",
+  "description": "Anime sub/latino desde animeav1.com (HTML). Video AV1: usa VLC o el navegador.",
+  "baseUrl": "https://animeav1.com",
+  "codec": "av1",
+  "headers": {
+    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36"
+  },
+  "search": {
+    "url": "{baseUrl}/catalogo?search={query}",
+    "item": "article:has(a[href^=/media/])",
+    "title": "h3",
+    "link": "a[href^=/media/]",
+    "thumbnail": "img",
+    "thumbnailAttr": "src",
+    "limit": 20
+  },
+  "episodes": {
+    "item": "a[href]",
+    "linkRegex": "/media/[^/]+/(\\d+(?:\\.\\d+)?)/?$",
+    "numberGroup": 1,
+    "sameAnimePrefix": true,
+    "dataRegex": "\\{id:\\d+,number:(\\d+(?:\\.\\d+)?)\\}",
+    "dataTemplate": "{animeUrl}/{1}"
+  },
+  "video": {
+    "servers": [
+      {
+        "name": "MP4Upload",
+        "type": "mp4",
+        "steps": [
+          { "regex": "server:\"MP4Upload\",url:\"(https://www\\.mp4upload\\.com/embed-[^\"]+)\"" },
+          { "regex": "src:\\s*\"(https?://[^\"]+\\.mp4)\"", "headers": { "Referer": "https://animeav1.com/" } }
+        ],
+        "streamHeaders": { "Referer": "https://www.mp4upload.com/" }
+      },
+      {
+        "name": "HLS",
+        "type": "hls",
+        "steps": [
+          {
+            "regex": "server:\"HLS\",url:\"https://player\\.zilla-networks\\.com/play/([0-9a-f]{32})\"",
+            "template": "https://player.zilla-networks.com/m3u8/{1}"
+          }
+        ],
+        "streamHeaders": {
+          "Origin": "https://player.zilla-networks.com",
+          "Sec-Fetch-Mode": "cors",
+          "Sec-Fetch-Site": "same-origin",
+          "Sec-Fetch-Dest": "empty"
+        }
+      }
+    ]
+  }
+}
